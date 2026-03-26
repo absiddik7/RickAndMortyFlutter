@@ -11,16 +11,27 @@ class CharacterGridCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const CharacterGridCard({
+    super.key,
     required this.character,
     required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
+    Color _statusColor(String status) {
+      switch (status.toLowerCase()) {
+        case 'alive':
+          return Colors.green.shade100;
+        case 'dead':
+          return Colors.red.shade100;
+        default:
+          return Colors.grey.shade300;
+      }
+    }
+
     return GestureDetector(
       onTap: onTap,
       child: Card(
-        elevation: AppConstants.cardElevation,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppConstants.borderRadius),
         ),
@@ -29,14 +40,14 @@ class CharacterGridCard extends StatelessWidget {
           children: [
             // Image section
             ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(AppConstants.borderRadius),
                 topRight: Radius.circular(AppConstants.borderRadius),
               ),
               child: CachedNetworkImage(
                 imageUrl: character.image,
                 width: double.infinity,
-                height: 140,
+                height: 190,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Shimmer.fromColors(
                   baseColor: Colors.grey[300]!,
@@ -44,13 +55,13 @@ class CharacterGridCard extends StatelessWidget {
                   child: Container(
                     color: Colors.white,
                     width: double.infinity,
-                    height: 140,
+                    height: 190,
                   ),
                 ),
                 errorWidget: (context, url, error) => Container(
                   color: Colors.grey[200],
-                  height: 140,
-                  child: Icon(Icons.error),
+                  height: 190,
+                  child: const Icon(Icons.error),
                 ),
               ),
             ),
@@ -68,51 +79,62 @@ class CharacterGridCard extends StatelessWidget {
                           character.name,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 13,
+                            fontSize: 14,
                           ),
                         ),
                       ),
-                      if (character.isEdited)
-                        Icon(Icons.edit, size: 12, color: Colors.orange),
                     ],
                   ),
-                  SizedBox(height: 2),
-                  // Species and Status
-                  Text(
-                    character.species,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11, color: Colors.grey[600]),
-                  ),
-                  Text(
-                    character.status,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: 11, color: Colors.grey[600]),
-                  ),
-                  SizedBox(height: 2),
-                  // Favorite button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 24,
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: IconButton(
-                        icon: Icon(
-                          character.isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: character.isFavorite ? Colors.red : null,
-                          size: 16,
+                  SizedBox(height: 6),
+                  // Species and Status as pill chips
+                  Row(
+                    children: [
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: _statusColor(character.status),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            character.status,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
-                        onPressed: () {
-                          Provider.of<CharacterProvider>(context, listen: false)
-                              .toggleFavorite(character);
-                        },
-                        padding: EdgeInsets.zero,
-                        constraints: BoxConstraints(),
                       ),
-                    ),
+                      const SizedBox(width: 8),
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: Colors.grey.shade300,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Text(
+                            character.species,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontSize: 11,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

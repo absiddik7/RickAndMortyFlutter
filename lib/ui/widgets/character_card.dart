@@ -9,7 +9,7 @@ class CharacterCard extends StatelessWidget {
   final Character character;
   final VoidCallback onTap;
 
-  const CharacterCard({
+  const CharacterCard({super.key, 
     required this.character,
     required this.onTap,
   });
@@ -18,7 +18,7 @@ class CharacterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: AppConstants.cardElevation,
-      margin: EdgeInsets.symmetric(
+      margin: const EdgeInsets.symmetric(
         horizontal: AppConstants.paddingMedium,
         vertical: AppConstants.paddingSmall,
       ),
