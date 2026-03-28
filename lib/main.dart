@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'core/provider/character_provider.dart';
-import 'core/constant/app_constants.dart';
+import 'core/utils/constant/app_constants.dart';
 import 'ui/screens/character_list_screen.dart';
 
 void main() {
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           elevation: 0,
         ),
       ),
-      home: CharacterListScreen(),
+      home: const CharacterListScreen(),
     );
   }
 }

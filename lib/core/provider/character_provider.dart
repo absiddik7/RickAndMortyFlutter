@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../model/character_model.dart';
-import '../repository/character_repository.dart';
+import 'package:rick_morty/core/model/character_model.dart';
+import 'package:rick_morty/core/repository/character_repository.dart';
 
 class CharacterProvider with ChangeNotifier {
   final CharacterRepository _repository = CharacterRepository();

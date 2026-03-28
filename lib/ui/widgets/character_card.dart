@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:provider/provider.dart';
-import '../../core/model/character_model.dart';
-import '../../core/provider/character_provider.dart';
-import '../../core/constant/app_constants.dart';
+import 'package:rick_morty/core/utils/constant/app_constants.dart';
+import 'package:rick_morty/core/model/character_model.dart';
+import 'package:rick_morty/core/provider/character_provider.dart';
 
 class CharacterCard extends StatelessWidget {
   final Character character;
   final VoidCallback onTap;
 
-  const CharacterCard({super.key, 
+  const CharacterCard({
+    super.key,
     required this.character,
     required this.onTap,
   });
@@ -26,16 +27,19 @@ class CharacterCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppConstants.borderRadius),
       ),
       child: ListTile(
-        contentPadding: EdgeInsets.all(AppConstants.paddingSmall),
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
-          child: CachedNetworkImage(
-            imageUrl: character.image,
-            width: AppConstants.characterImageSize,
-            height: AppConstants.characterImageSize,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => CircularProgressIndicator(),
-            errorWidget: (context, url, error) => Icon(Icons.error),
+        contentPadding: const EdgeInsets.all(AppConstants.paddingSmall),
+        leading: Hero(
+          tag: 'character_${character.id}',
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+            child: CachedNetworkImage(
+              imageUrl: character.image,
+              width: AppConstants.characterImageSize,
+              height: AppConstants.characterImageSize,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+            ),
           ),
         ),
         title: Row(
@@ -43,11 +47,12 @@ class CharacterCard extends StatelessWidget {
             Expanded(
               child: Text(
                 character.name,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),
             if (character.isEdited)
-              Icon(Icons.edit, size: 16, color: Colors.orange),
+              const Icon(Icons.edit, size: 16, color: Colors.orange),
           ],
         ),
         subtitle: Column(
@@ -56,14 +61,21 @@ class CharacterCard extends StatelessWidget {
             Text('${character.species} - ${character.status}'),
           ],
         ),
-        trailing: IconButton(
-          icon: Icon(
-            character.isFavorite ? Icons.favorite : Icons.favorite_border,
-            color: character.isFavorite ? Colors.red : null,
-          ),
-          onPressed: () {
-            Provider.of<CharacterProvider>(context, listen: false)
-                .toggleFavorite(character);
+        trailing: Consumer<CharacterProvider>(
+          builder: (context, prov, _) {
+            final current = prov.characters.firstWhere(
+              (c) => c.id == character.id,
+              orElse: () => character,
+            );
+            return IconButton(
+              icon: Icon(
+                current.isFavorite ? Icons.favorite : Icons.favorite_border,
+                color: current.isFavorite ? Colors.red : null,
+              ),
+              onPressed: () {
+                prov.toggleFavorite(current);
+              },
+            );
           },
         ),
         onTap: onTap,

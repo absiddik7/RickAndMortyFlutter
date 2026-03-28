@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/character_model.dart';
-import '../db/database_helper.dart';
-import '../constant/app_constants.dart';
+import 'package:rick_morty/core/db/database_helper.dart';
+import 'package:rick_morty/core/model/character_model.dart';
+import 'package:rick_morty/core/utils/constant/app_constants.dart';
 
 class CharacterRepository {
   final DatabaseHelper _dbHelper = DatabaseHelper();

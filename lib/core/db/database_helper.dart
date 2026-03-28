@@ -1,6 +1,6 @@
+import 'package:rick_morty/core/model/character_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import '../model/character_model.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -63,22 +63,24 @@ class DatabaseHelper {
     ''');
   }
 
-  // --- CRUD for Characters (Cache) ---
   Future<void> insertCharacters(List<Character> characters) async {
     final db = await database;
     Batch batch = db.batch();
     for (var char in characters) {
-      batch.insert('characters', {
-        'id': char.id,
-        'name': char.name,
-        'status': char.status,
-        'species': char.species,
-        'type': char.type,
-        'gender': char.gender,
-        'originName': char.originName,
-        'locationName': char.locationName,
-        'image': char.image,
-      }, conflictAlgorithm: ConflictAlgorithm.replace);
+      batch.insert(
+          'characters',
+          {
+            'id': char.id,
+            'name': char.name,
+            'status': char.status,
+            'species': char.species,
+            'type': char.type,
+            'gender': char.gender,
+            'originName': char.originName,
+            'locationName': char.locationName,
+            'image': char.image,
+          },
+          conflictAlgorithm: ConflictAlgorithm.replace);
     }
     await batch.commit(noResult: true);
   }
@@ -88,11 +90,11 @@ class DatabaseHelper {
     return await db.query('characters');
   }
 
-  // --- CRUD for Favorites ---
   Future<void> toggleFavorite(int id, bool isFavorite) async {
     final db = await database;
     if (isFavorite) {
-      await db.insert('favorites', {'id': id}, conflictAlgorithm: ConflictAlgorithm.replace);
+      await db.insert('favorites', {'id': id},
+          conflictAlgorithm: ConflictAlgorithm.replace);
     } else {
       await db.delete('favorites', where: 'id = ?', whereArgs: [id]);
     }
@@ -104,19 +106,21 @@ class DatabaseHelper {
     return List.generate(maps.length, (i) => maps[i]['id'] as int);
   }
 
-  // --- CRUD for Overrides (Edits) ---
   Future<void> saveOverride(Character char) async {
     final db = await database;
-    await db.insert('overrides', {
-      'id': char.id,
-      'name': char.name,
-      'status': char.status,
-      'species': char.species,
-      'type': char.type,
-      'gender': char.gender,
-      'originName': char.originName,
-      'locationName': char.locationName,
-    }, conflictAlgorithm: ConflictAlgorithm.replace);
+    await db.insert(
+        'overrides',
+        {
+          'id': char.id,
+          'name': char.name,
+          'status': char.status,
+          'species': char.species,
+          'type': char.type,
+          'gender': char.gender,
+          'originName': char.originName,
+          'locationName': char.locationName,
+        },
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> deleteOverride(int id) async {

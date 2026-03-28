@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:rick_morty/core/utils/constant/app_constants.dart';
+import 'package:rick_morty/core/provider/character_provider.dart';
+import 'package:rick_morty/ui/screens/character_detail_screen.dart';
+import 'package:rick_morty/ui/screens/favorites_screen.dart';
+import 'package:rick_morty/ui/widgets/character_grid_card.dart';
 import 'package:shimmer/shimmer.dart';
-import '../../core/provider/character_provider.dart';
-import '../../core/constant/app_constants.dart';
-import '../widgets/character_grid_card.dart';
-import 'character_detail_screen.dart';
-import 'favorites_screen.dart';
+
 
 class CharacterListScreen extends StatefulWidget {
   const CharacterListScreen({super.key});
 
   @override
-  _CharacterListScreenState createState() => _CharacterListScreenState();
+  State<CharacterListScreen> createState() => _CharacterListScreenState();
 }
 
 class _CharacterListScreenState extends State<CharacterListScreen> {
@@ -50,7 +51,6 @@ class _CharacterListScreenState extends State<CharacterListScreen> {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold)),
-          centerTitle: false,
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.transparent,
           actions: [
