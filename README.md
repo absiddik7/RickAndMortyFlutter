@@ -14,6 +14,7 @@
 
 - [Overview](#overview)
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Architecture](#architecture)
 - [Implementation Approach](#implementation-approach)
 - [Tech Stack](#tech-stack)
@@ -72,6 +73,28 @@ The app combines remote API data with local SQLite storage to provide a smoother
 | **Edit Character** | Update character fields locally through a form screen |
 | **Edited Indicator** | Visual badge on detail screen for modified characters |
 | **Reset to API Data** | Remove local override and restore original API-backed data |
+
+---
+
+## Screenshots
+
+<div align="center">
+
+### Core Screens
+
+| Character List | Character Details | Edit Character | Favorites |
+|:--------------:|:-----------------:|:--------------:|:---------:|
+| ![Character List Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Character+List+Demo) | ![Character Details Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Character+Details+Demo) | ![Edit Character Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Edit+Character+Demo) | ![Favorites Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Favorites+Demo) |
+
+### Search and Filter States
+
+| Search Applied | Status Filter | No Matching Results | Edited Status |
+|:--------------:|:--------------------:|:-------------------:|:-------------------:|
+| ![Search Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Search+Demo) | ![Alive Filter Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Alive+Filter+Demo) | ![Dead Filter Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Dead+Filter+Demo) | ![No Results Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=No+Results+Demo) |
+
+</div>
+
+Replace each placeholder image URL above with your uploaded screenshot URL when ready.
 
 ---
 
