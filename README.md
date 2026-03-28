@@ -75,7 +75,6 @@ The app combines remote API data with local SQLite storage to provide a smoother
 | **Reset to API Data** | Remove local override and restore original API-backed data |
 
 ---
-
 ## Screenshots
 
 <div align="center">
@@ -84,13 +83,13 @@ The app combines remote API data with local SQLite storage to provide a smoother
 
 | Character List | Character Details | Edit Character | Favorites |
 |:--------------:|:-----------------:|:--------------:|:---------:|
-| ![Character List Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Character+List+Demo) | ![Character Details Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Character+Details+Demo) | ![Edit Character Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Edit+Character+Demo) | ![Favorites Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Favorites+Demo) |
+| <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 18 45" src="https://github.com/user-attachments/assets/3d33bd43-8c43-4d1d-ad23-a0cc3811ab13" /> | <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 19 15" src="https://github.com/user-attachments/assets/5cdd4c58-0554-4736-af25-4ed690af8349" /> | <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 19 33" src="https://github.com/user-attachments/assets/12fda2a7-0666-47d2-9d34-a3ed5812b3ef" /> | <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 19 48" src="https://github.com/user-attachments/assets/b0c4afb4-b703-4159-811f-8b13ec7f2f35" /> |
 
 ### Search and Filter States
 
 | Search Applied | Status Filter | No Matching Results | Edited Status |
 |:--------------:|:--------------------:|:-------------------:|:-------------------:|
-| ![Search Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Search+Demo) | ![Alive Filter Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Alive+Filter+Demo) | ![Dead Filter Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=Dead+Filter+Demo) | ![No Results Demo](https://dummyimage.com/320x640/e5e7eb/111827&text=No+Results+Demo) |
+| <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 20 09" src="https://github.com/user-attachments/assets/974b6bc2-288e-4244-b48a-b38fc9415efd" /> | <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 19 55" src="https://github.com/user-attachments/assets/2de90abb-201d-4dcf-85b5-f456adef3b72" /> | <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 28 47" src="https://github.com/user-attachments/assets/6559a891-33f6-4f41-b02c-25c94554882d" /> | <img width="1320" height="2868" alt="Simulator Screenshot - iPhone 17 Pro Max - 2026-03-28 at 22 42 41" src="https://github.com/user-attachments/assets/61c20b30-b72e-40eb-be18-854b509839e5" /> |
 
 </div>
 
